@@ -20,7 +20,15 @@ namespace ArithmeticSequenceTask
         /// <exception cref="ArgumentException">Throw if count less then zero.</exception>
         public static int Calculate(int number, int add, int count)
         {
-            try
+            if ((number >= int.MaxValue && add > 0 && count > 1) || (number <= int.MinValue && add < 0 && count > 1))
+            {
+                throw new OverflowException("The obtained result out of range of integer values.");
+            }
+            else if (count <= 0)
+            {
+                throw new ArgumentException("The count of elements of the sequence cannot be less or equals zero.");
+            }
+            else
             {
                 var result = 0;
                 for (int i = 0; i < count; i++)
@@ -35,11 +43,6 @@ namespace ArithmeticSequenceTask
                 }
 
                 return result;
-            }
-            catch (OverflowException)
-            {
-                Console.WriteLine("The obtained result out of range of integer values.");
-                throw;
             }
         }
     }
