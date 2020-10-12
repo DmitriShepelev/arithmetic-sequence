@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 
 namespace ArithmeticSequenceTask
 {
@@ -20,7 +20,27 @@ namespace ArithmeticSequenceTask
         /// <exception cref="ArgumentException">Throw if count less then zero.</exception>
         public static int Calculate(int number, int add, int count)
         {
-            throw new NotImplementedException("You need to implement this method.");
+            try
+            {
+                var result = 0;
+                for (int i = 0; i < count; i++)
+                {
+                    var sum = 0;
+                    for (int j = 0; j < i; j++)
+                    {
+                        sum += add;
+                    }
+
+                    result += number + sum;
+                }
+
+                return result;
+            }
+            catch (OverflowException)
+            {
+                Console.WriteLine("The obtained result out of range of integer values.");
+                throw;
+            }
         }
     }
 }
