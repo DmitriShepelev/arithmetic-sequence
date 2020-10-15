@@ -28,22 +28,20 @@ namespace ArithmeticSequenceTask
             {
                 throw new ArgumentException("The count of elements of the sequence cannot be less or equals zero.");
             }
-            else
-            {
-                var result = 0;
-                for (int i = 0; i < count; i++)
-                {
-                    var sum = 0;
-                    for (int j = 0; j < i; j++)
-                    {
-                        sum += add;
-                    }
 
-                    result += number + sum;
+            var result = 0;
+            for (int i = 0; i < count; i++)
+            {
+                var sum = 0;
+                for (int j = 0; j < i; j++)
+                {
+                    sum += add;
                 }
 
-                return result;
+                result += number + sum;
             }
+
+            return result;
         }
     }
 }
